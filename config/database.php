@@ -52,6 +52,20 @@ return [
             'prefix' => '',
         ],
 
+        'heroku' => [
+            'driver'   => 'mysql',
+            'host'     => parse_url(getenv("CLEARDB_DATABASE_URL"))["host"],
+            'port' => env('DB_PORT', '3306'),
+            'database' => substr(parse_url(getenv("CLEARDB_DATABASE_URL"))["path"], 1),
+            'username' => parse_url(getenv("CLEARDB_DATABASE_URL"))["user"],
+            'password' => parse_url(getenv("CLEARDB_DATABASE_URL"))["pass"],
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],
+
         'mysql' => [
             'driver' => 'mysql',
             'host' => env('DB_HOST', 'localhost'),
