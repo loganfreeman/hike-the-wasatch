@@ -22,7 +22,7 @@
                     @endif
                     <form action="{{ route('user.profile.settings.update', Auth::user()->name) }}" method="post" enctype="multipart/form-data">
                         <h4>Change avatar</h4>
-                        <img src="{{ Config::get('s3.buckets.images') . '/avatars/' . ($user->hasCustomAvatar() ?  $user->avatar : 'avatar-blank.png') }}" class="img-thumbnail" width="100" height="100" alt="{{ $user->name }}-avatar">
+                        <img src="{{ $user->hasCustomAvatar() ? Config::get('s3.buckets.images') . '/avatars/' . $user->avatar : '/images/avatar-blank.png' }}" class="img-thumbnail" width="100" height="100" alt="{{ $user->name }}-avatar">
                         <div class="form-group{{ $errors->has('avatar') ? ' has-error' : '' }}">
                             <label for="avatar" class="control-label">Avatar Image</label>
                             <input type="file" name="avatar" id="avatar" class="form-control">

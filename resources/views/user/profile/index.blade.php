@@ -8,7 +8,7 @@
                 <div class="panel-heading">{{ '@' . $user->name }}'s Profile</div>
 
                 <div class="panel-body">
-                    <img src="{{ Config::get('s3.buckets.images') . '/avatars/' . ($user->hasCustomAvatar() ?  $user->avatar : 'avatar-blank.png') }}" class="img-thumbnail pull-left" width="100" height="100" alt="{{ $user->name }}-avatar">
+                    <img src="{{ $user->hasCustomAvatar() ? Config::get('s3.buckets.images') . '/avatars/' . $user->avatar : '/images/avatar-blank.png' }}" class="img-thumbnail pull-left" width="100" height="100" alt="{{ $user->name }}-avatar">
                     @if (Auth::check() && Auth::user()->id === $user->id)
                         <a href="{{ route('user.profile.settings.index', Auth::user()->name) }}" class="pull-right"><span class="glyphicon glyphicon-pencil"></span></a>
                     @endif
