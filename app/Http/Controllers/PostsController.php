@@ -85,11 +85,11 @@ class PostsController extends Controller
         $post->body = $request->post;
         $post->save();
 
-        // $mentioned_users = $this->getMentionedUsers($request);
-        //
-        // if (count($mentioned_users)) {
-        //     event(new UsersMentioned($mentioned_users, $topic, $post));
-        // }
+        $mentioned_users = GetMentionedUsers::handle($request->post);
+
+        if (count($mentioned_users)) {
+            event(new UsersMentioned($mentioned_users, $topic, $post));
+        }
 
         return redirect()->route('forum.topics.topic.show', [
             'topic' => $topic,
