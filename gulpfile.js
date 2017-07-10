@@ -17,4 +17,8 @@ elixir((mix) => {
     mix.sass('app.scss');
     mix.webpack('app.js');
     //mix.version(['css/app.css', 'js/app.js']);
+    //
+    mix
+    .copy('node_modules/font-awesome/fonts/', 'public/fonts/font-awesome')
+    .copy('node_modules/ionicons/dist/fonts/', 'public/fonts/ionicons');
 });

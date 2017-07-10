@@ -3,7 +3,22 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+
+        <div class="col-md-3 side-bar">
+            <ul class="list-group">
+              <li class="list-group-item">
+                <div class="text-center">
+                  <a href="{{ route('forum.topics.create.form') }}" class="btn btn-primary">
+                    <i class="fa fa-pencil"> </i> Create a topic
+                  </a>
+
+                </div>
+              </li>
+
+            </ul>
+        </div> <!-- End of side-bar -->
+
+        <div class="col-md-9 main-col">
             @if (Session::get('register_using_code') !== null)
                 <div class="alert alert-{{ (Session::get('register_using_code') ? 'success' : 'danger' ) }} alert-dismissible" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -13,8 +28,6 @@
             <div class="panel panel-default">
                 <div class="panel-heading">My topics</div>
                 <div class="panel-body" style="text-align: center">
-                    <a href="{{ route('forum.topics.create.form') }}" class="btn btn-primary btn-block">Create a topic</a>
-                    <br />
                     <ul class="list-group">
                         @if (count($topics))
                             @foreach ($topics as $topic)
@@ -39,7 +52,13 @@
                     </ul>
                 </div>
             </div>
-        </div>
+        </div> <!-- End of main-col -->
+
+
     </div>
+
+
+
+
 </div>
 @endsection
