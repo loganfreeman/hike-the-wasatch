@@ -8148,16 +8148,14 @@ img.img-thumbnail {
 .msg-form {
   clear: both; }
 
-.side-bar {
-  padding-right: 0px; }
-  .side-bar ul.list {
-    margin: 0;
-    padding-left: 11px; }
-    .side-bar ul.list a, .side-bar ul.list a:focus, .side-bar ul.list a:hover {
-      color: #737373; }
-    .side-bar ul.list li {
-      margin-bottom: 4px;
-      line-height: 18px; }
+.side-bar ul.list {
+  margin: 0;
+  padding-left: 11px; }
+  .side-bar ul.list a, .side-bar ul.list a:focus, .side-bar ul.list a:hover {
+    color: #737373; }
+  .side-bar ul.list li {
+    margin-bottom: 4px;
+    line-height: 18px; }
 
 .main-col {
   padding-left: 15px;
