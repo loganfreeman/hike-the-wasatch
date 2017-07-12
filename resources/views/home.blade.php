@@ -16,6 +16,8 @@
               </li>
 
             </ul>
+
+            @include("partials.links")
         </div> <!-- End of side-bar -->
 
         <div class="col-md-9 main-col">
