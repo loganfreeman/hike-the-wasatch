@@ -5,17 +5,7 @@
     <div class="row">
 
         <div class="col-md-3 side-bar">
-            <ul class="list-group">
-              <li class="list-group-item">
-                <div class="text-center">
-                  <a href="{{ route('forum.topics.create.form') }}" class="btn btn-primary">
-                    <i class="fa fa-pencil"> </i> Create a topic
-                  </a>
-
-                </div>
-              </li>
-
-            </ul>
+            @include("partials.links")
         </div> <!-- End of side-bar -->
 
         <div class="col-md-9 main-col">
