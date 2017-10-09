@@ -5,11 +5,15 @@ namespace App;
 use Config;
 use App\Message;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Jcc\LaravelVote\Vote;
+use App\Traits\FollowTrait;
+use App\Scopes\StatusScope;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, SoftDeletes, FollowTrait, Vote;
 
     /**
      * The attributes that are mass assignable.
@@ -18,6 +22,9 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name', 'email', 'avatar', 'role', 'password', 'last_activity',
+        'confirm_code', 'is_admin',
+        'nickname', 'real_name', 'weibo_name', 'weibo_link', 'email_notify_enabled',
+        'github_id', 'github_name', 'github_url', 'website', 'description', 'status'
     ];
 
     /**
@@ -26,8 +33,51 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'confirm_code', 'updated_at', 'deleted_at'
     ];
+
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    public static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope(new StatusScope());
+    }
+
+    /**
+     * Get the discussions for the user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function discussions()
+    {
+        return $this->hasMany(Discussion::class)->orderBy('created_at', 'desc');
+    }
+
+    /**
+     * Get the comments for the user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function comments()
+    {
+        return $this->hasMany(Comment::class)->orderBy('created_at', 'desc');
+    }
+
+    /**
+     * Get the avatar and return the default avatar if the avatar is null.
+     *
+     * @param string $value
+     * @return string
+     */
+    public function getAvatarAttribute($value)
+    {
+        return isset($value) ? $value : config('blog.default_avatar');
+    }
 
     /**
      * Attribute that User is identifiable by.
