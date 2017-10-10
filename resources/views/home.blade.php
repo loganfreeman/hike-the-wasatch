@@ -4,11 +4,9 @@
 <div class="container">
     <div class="row">
 
-        <div class="col-md-3 side-bar">
-            @include("partials.links")
-        </div> <!-- End of side-bar -->
 
-        <div class="col-md-9 main-col">
+
+        <div class="col-md-12 main-col">
             @if (Session::get('register_using_code') !== null)
                 <div class="alert alert-{{ (Session::get('register_using_code') ? 'success' : 'danger' ) }} alert-dismissible" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>

@@ -9,8 +9,13 @@ $fa-font-size-base:   10px !default;
 // Variables
 @import "variables";
 
+@import "mixin";
+
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+// blog
+@import "blog";
 
 // Custom
 @import "custom";
