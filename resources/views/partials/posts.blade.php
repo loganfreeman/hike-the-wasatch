@@ -1,7 +1,11 @@
 @foreach ($posts as $post)
     <report-post-button topic-slug="{{ $topic->slug }}" post-id="{{ $post->id }}" class="pull-right report-text"></report-post-button>
     <div class="post" id="post-{{ $post->id }}">
-        <img src="{{ App\User::findOrFail($post->user_id)->hasCustomAvatar() ? Config::get('s3.buckets.images') . '/avatars/' . App\User::findOrFail($post->user_id)->avatar : '/images/avatar-blank.png' }}" width="60" height="60" class="img-thumbnail pull-left" alt="{{ $topic->title }} image"/> <span class="pull-left">{{ Carbon\Carbon::createFromTimeStamp(strtotime($post->created_at))->diffForHumans() }} by <a href="/user/profile/{{ '@' . $user = App\User::findOrFail($post->user_id)->name }}"></a> <a href="/user/profile/{{ '@' . $user = App\User::findOrFail($post->user_id)->name }}">{{ '@' . $user = App\User::findOrFail($post->user_id)->name }}</a></span>
+        <img src="{{ App\User::findOrFail($post->user_id)->hasCustomAvatar() ? Config::get('s3.buckets.images') . App\User::findOrFail($post->user_id)->avatar : '/images/avatar-blank.png' }}" width="60" height="60" class="img-thumbnail pull-left" />
+        <span class="pull-left">{{ Carbon\Carbon::createFromTimeStamp(strtotime($post->created_at))->diffForHumans() }} by
+          <a href="/user/profile/{{ '@' . $user = App\User::findOrFail($post->user_id)->name }}"></a>
+          <a href="/user/profile/{{ '@' . $user = App\User::findOrFail($post->user_id)->name }}">{{ '@' . $user = App\User::findOrFail($post->user_id)->name }}</a>
+        </span>
         <br /><br /><br />
         <div class="markdown-body">
             {!! GrahamCampbell\Markdown\Facades\Markdown::convertToHtml(
