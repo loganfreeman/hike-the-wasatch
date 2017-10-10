@@ -32,7 +32,7 @@
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
-                <div class="navbar-header">
+                <div class="navbar-header page-scroll">
 
                     <!-- Collapsed Hamburger -->
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
@@ -75,7 +75,7 @@
                                   <a href="https://www.alltrails.com/explore?b_tl_lat=40.925964939514294&b_tl_lng=-114.02984619140625&b_br_lat=39.28967134685658&b_br_lng=-109.676513671875">
                                     Best hikes in UTAH
                                   </a>
-                                </li>                                  
+                                </li>
                               </ul>
                             </li>
                             <li class="dropdown">
@@ -111,6 +111,8 @@
                 </div>
             </div>
         </nav>
+
+        @include('partials.header')
 
         @yield('content')
     </div>
