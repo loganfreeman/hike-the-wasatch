@@ -168,6 +168,7 @@ return [
          */
         Intervention\Image\ImageServiceProvider::class,
         GrahamCampbell\Markdown\MarkdownServiceProvider::class,
+        Jcc\LaravelVote\VoteServiceProvider::class,
         /*
          * Application Service Providers...
          */
